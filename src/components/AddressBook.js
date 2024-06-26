@@ -18,9 +18,10 @@ const AddressBook = () => {
     localStorage.setItem('addresses', JSON.stringify(updatedAddresses));
   };
 
-  const filteredAddresses = addresses.filter((address) =>
-    `${address.firstName} ${address.lastName}`.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredAddresses = addresses.filter((address) => {
+    const fullAddress = `${address.firstName} ${address.lastName} ${address.address} ${address.city} ${address.state} ${address.country} ${address.telephone}`;
+    return fullAddress.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div className="addressbook-container">
